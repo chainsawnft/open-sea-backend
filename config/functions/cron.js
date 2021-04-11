@@ -47,32 +47,32 @@ module.exports = {
    * Once per hour, check for sales and end of auction events
    */
   '0 0 * * * *': async () => {
-    // Get all asset that are currently on sale
-    const allAssets = await strapi.services.token.find({_limit: -1, onSale: true, sold: false})
-    console.log("allAssets", allAssets.length)
+    // Something is broken here which causes it to auto-reset
+    // // Get all asset that are currently on sale
+    // const allAssets = await strapi.services.token.find({_limit: -1, onSale: true, sold: false})
+    // console.log("allAssets", allAssets.length)
 
-    const res = await Promise.all(allAssets.map(async(asset) => {
-      try{
-        const singleAssetCheck = await axios({
-          method: "GET",
-          url: `https://api.opensea.io/api/v1/asset/${asset.address}/${asset.tokenId}`,
-          headers: {
-            "X-API-KEY": process.env.OPENSEA_API_KEY || undefined
-          }
-        })
-        const result = singleAssetCheck.data
-        if(auctionEnded(result) || hasSold(result)){
-          await strapi.services.token.update({id: asset.id}, {
-            onSale: !auctionEnded(result),
-            sold: hasSold(result),
-            soldFor: soldFor(result)
-          })
-        }
-      } catch(err){
-        console.log("Exception in updating an asset", err)
-      }
-    }))
+    // const res = await Promise.all(allAssets.map(async(asset) => {
+    //   try{
+    //     const singleAssetCheck = await axios({
+    //       method: "GET",
+    //       url: `https://api.opensea.io/api/v1/asset/${asset.address}/${asset.tokenId}`,
+    //       headers: {
+    //         "X-API-KEY": process.env.OPENSEA_API_KEY || undefined
+    //       }
+    //     })
+    //     const result = singleAssetCheck.data
+    //     if(auctionEnded(result) || hasSold(result)){
+    //       await strapi.services.token.update({id: asset.id}, {
+    //         onSale: !auctionEnded(result),
+    //         sold: hasSold(result),
+    //         soldFor: soldFor(result)
+    //       })
+    //     }
+    //   } catch(err){
+    //     console.log("Exception in updating an asset", err)
+    //   }
+    // }))
 
-    // Check if it has sold
   }
 };
