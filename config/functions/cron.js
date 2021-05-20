@@ -63,7 +63,7 @@ module.exports = {
         const result = singleAssetCheck.data
         if(auctionEnded(result) || hasSold(result)){
           await strapi.services.token.update({id: asset.id}, {
-            onSale: !auctionEnded(result),
+            // onSale: !auctionEnded(result),
             sold: hasSold(result),
             soldFor: soldFor(result)
           })
