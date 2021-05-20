@@ -67,7 +67,7 @@
       "type": "string"
     },
     "whitehot": {
-      "type": "boolean"
+      "type": "string"
     }
   }
 }
