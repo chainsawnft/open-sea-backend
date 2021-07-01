@@ -26,8 +26,8 @@
       "via": "artist"
     },
     "tokens": {
-      "collection": "token",
-      "via": "artist"
+      "via": "artist",
+      "collection": "token"
     },
     "description": {
       "type": "richtext"
@@ -49,6 +49,19 @@
     },
     "priority": {
       "type": "integer"
+    },
+    "Amalgamation": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Cryptopunk3100": {
+      "type": "boolean",
+      "default": false
+    },
+    "Whitehot": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
