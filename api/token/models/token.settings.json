@@ -41,8 +41,8 @@
       "type": "string"
     },
     "artist": {
-      "via": "tokens",
-      "model": "artist"
+      "model": "artist",
+      "via": "tokens"
     },
     "onSale": {
       "type": "boolean",
@@ -74,6 +74,9 @@
     },
     "amalgamation": {
       "type": "boolean"
+    },
+    "etherscan": {
+      "type": "string"
     }
   }
 }
