@@ -41,8 +41,8 @@
       "type": "string"
     },
     "artist": {
-      "model": "artist",
-      "via": "tokens"
+      "via": "tokens",
+      "model": "artist"
     },
     "onSale": {
       "type": "boolean",
@@ -66,13 +66,13 @@
     "buttonMessage": {
       "type": "string"
     },
-    "Whitehot": {
+    "whitehot": {
       "type": "boolean"
     },
-    "Cryptopunk3100": {
+    "cryptopunk3100": {
       "type": "boolean"
     },
-    "Amalgamation": {
+    "amalgamation": {
       "type": "boolean"
     }
   }
